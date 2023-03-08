@@ -50,12 +50,12 @@ view: sfpd_incidents {
 
   measure: stolen_vehicules {
     type: sum
-    sql: CASE WHEN strpos(${descript}, "STOLEN AUTOMOBILE") > 0 THEN 1 ELSE O END ;;
+    sql: CASE WHEN strpos(${descript}, "STOLEN AUTOMOBILE") > 0 THEN 1 ELSE 0 END ;;
   }
 
   measure: theft_vehicules {
     type: sum
-    sql: CASE WHEN strpos(${descript}, "THEFT FROM LOCKED AUTO") > 0 THEN 1 ELSE O END ;;
+    sql: CASE WHEN strpos(${descript}, "THEFT FROM LOCKED AUTO")> 0 THEN 1 ELSE 0 END ;;
   }
 
 }
