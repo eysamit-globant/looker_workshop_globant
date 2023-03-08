@@ -12,6 +12,11 @@ view: sfpd_incidents {
     sql: ${TABLE}.category ;;
   }
 
+  dimension: dayofweek {
+    type: string
+    sql: ${TABLE}.dayofweek ;;
+  }
+
   dimension: descript {
     type: string
     sql: ${TABLE}.descript ;;
@@ -27,24 +32,44 @@ view: sfpd_incidents {
     sql: ${TABLE}.longitude ;;
   }
 
-  dimension: location {
+  dimension: location_incidents {
     type: location
-    sql_latitude:  ${latitude};;
-    sql_longitude: ${longitude} ;;
+    sql_latitude:${latitude} ;;
+    sql_longitude:${longitude} ;;
+  }
+
+  dimension: location {
+    type: string
+    sql: ${TABLE}.location ;;
+  }
+
+  dimension: pddistrict {
+    type: string
+    sql: ${TABLE}.pddistrict ;;
+  }
+
+  dimension: pdid {
+    type: number
+    value_format_name: id
+    sql: ${TABLE}.pdid ;;
+  }
+
+  dimension: resolution {
+    type: string
+    sql: ${TABLE}.resolution ;;
   }
 
   dimension_group: timestamp {
     type: time
-    timeframes: [raw,
+    timeframes: [
+      raw,
       time,
-      day_of_month,
-      day_of_week,
-      hour,
       date,
       week,
       month,
-      year,
-      quarter]
+      quarter,
+      year
+    ]
     sql: ${TABLE}.timestamp ;;
   }
 

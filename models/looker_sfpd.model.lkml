@@ -1,5 +1,13 @@
 connection: "looker_workshop_globant"
 
-include: "/views/*.view.lkml" # include all views in the views/ folder in this project
+# include all the views
+include: "/views/**/*.view"
+
+datagroup: looker_workshop_globant_default_datagroup {
+  # sql_trigger: SELECT MAX(id) FROM etl_log;;
+  max_cache_age: "1 hour"
+}
+
+persist_with: looker_workshop_globant_default_datagroup
 
 explore: sfpd_incidents {}
