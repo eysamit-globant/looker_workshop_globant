@@ -83,8 +83,5 @@ view: sfpd_incidents {
     sql: CASE WHEN strpos(${descript}, "THEFT FROM LOCKED AUTO")> 0 THEN 1 ELSE 0 END ;;
   }
 
-  measure: count {
-    type: count
-  }
 
 }
